@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+    <title>log in</title>
+    <link rel="stylesheet" href="StartPageStyles.css">
+</head>
+<body>
+    <div class="container">
+        <form id="signup-field">
+            <fieldset>
+                <legend>sign up</legend>
+                <input id="signup-username" type="text" placeholder="username" required>
+                <input id="signup-email" type="email" placeholder="email" required>
+                <input id="signup-password" type="password" placeholder="password(8 characters first uppercase)" pattern="[A-Z]{1}[a-z]{7}[0-9]{0,4}" required>
+                <button type="submit">sign up</button>
+            </fieldset>
+        </form>
+        <form id="signin-field">
+            <fieldset id="signin-field">
+                <legend>sign in</legend>
+                <input id="signin-email" type="email" placeholder="email" required>
+                <input id="signin-password" type="password" placeholder="password" required>
+                <button type="submit">sign in</button>
+            </fieldset>
+        </form>
+    </div>
+    <script src="StartPage.js"></script>
+</body>
+</html>
