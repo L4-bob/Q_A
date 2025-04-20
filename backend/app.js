@@ -61,17 +61,73 @@ app.post('/api/signin', async (req, res) => {
 
 ////////////////////////hadhi kifach nzidou post lel bd////////////////////////////////////////
 app.post('/api/posts', (req, res) => {
-    const { title, content, author } = req.body;
+    const { title, content, author ,category} = req.body;
     const date = new Date().toISOString();
   
     db.run(
-      'INSERT INTO posts (title, content, author, date) VALUES (?, ?, ?, ?)',
-      [title, content, author, date],
+      'INSERT INTO posts (title, content, author, date, category) VALUES (?, ?, ?, ?,?)',
+      [title, content, author, date, category],
       res.status(201).json({ message : 'post added successfully !'})
     );
   });
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
+
+app.delete('/api/posts/:postID', (req, res) => {
+    const postId = req.params.postID;
+
+    // Use a transaction for atomic operations
+    db.serialize(() => {
+        db.run('BEGIN TRANSACTION');
+
+        // First delete all comments
+        db.run('DELETE FROM comments WHERE postId = ?', [postId], function(err) {
+            if (err) {
+                db.run('ROLLBACK');
+                console.error("Error deleting comments:", err);
+                return res.status(500).json({ message: 'Failed to delete comments' });
+            }
+
+            // Then delete the post
+            db.run('DELETE FROM posts WHERE postID = ?', [postId], function(err) {
+                if (err) {
+                    db.run('ROLLBACK');
+                    console.error("Error deleting post:", err);
+                    return res.status(500).json({ message: 'Failed to delete post' });
+                }
+
+                // Check if any post was actually deleted
+                if (this.changes === 0) {
+                    db.run('ROLLBACK');
+                    return res.status(404).json({ message: 'Post not found' });
+                }
+
+                db.run('COMMIT');
+                res.json({ 
+                    message: 'Post and comments deleted successfully',
+                    deletedPostId: postId
+                });
+            });
+        });
+    });
+});
+
+app.delete('/api/comments/:id', (req, res) => {
+    const commentId = req.params.id;
+    
+    db.run('DELETE FROM comments WHERE id = ?', [commentId], function(err) {
+        if (err) {
+            console.error("Error deleting comment:", err);
+            return res.status(500).json({ message: 'Failed to delete comment' });
+        }
+        
+        if (this.changes === 0) {
+            return res.status(404).json({ message: 'Comment not found' });
+        }
+        
+        res.json({ message: 'Comment deleted successfully' });
+    });
+});
 
 
 
