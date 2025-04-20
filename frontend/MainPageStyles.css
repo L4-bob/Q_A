@@ -7,21 +7,216 @@ body {
     padding: 0;
     line-height: 1.6;
 }
-
+header h1{
+    margin-top: 0px;
+    font-size: 40px;
+    text-align: center;
+    color: #ddd;
+}
+header{
+    padding: 50px;
+    height: 50px;
+    background-color: #7729ca;
+}
+h4{
+    margin-left: 40px;
+    width: 250px;
+}
+select{
+    margin-left: 40px;
+    margin-bottom: 10px;
+}
+a{
+    margin-left: 180px;
+    color: #ddd;
+    font-size: 30px;
+    font-family: 'Arial';
+    
+    
+}
+a:hover{
+    color: blanchedalmond;
+}
+label{
+    margin-left: 35px;
+    font-size: 20px;
+}
+#category{
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    
+    margin-left: 8px;
+    height: 38px; 
+    
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-color: #6a11cb;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234CAF50'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 16px;
+    padding-right: 30px;
+  }
+  p{
+    overflow-wrap: break-word; 
+}
 .container {
+    margin-top: 50px;
+    margin-left: 10%;
     max-width: 800px;
-    margin: 2rem auto;
     padding: 1rem;
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+.search-container {
+    margin-top: 50px;
+    position: sticky;
+    margin-right: 150px;
+    float: right;
+    width: 600px;
+    flex: 0 0 350px; /* Fixed width for search */
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    top: 1rem; /* Sticks to the top when scrolling */
+    align-self: flex-start; /* Prevents stretching */
+}
+
+#search-form {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+
+
+#search-form input{
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    margin-left: 30px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    border-color: #6a11cb;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+#search-form input:focus{
+    border-color: #6a11cb;
+    outline: none;
+}
+
+
+
+.del-post button {
+    float: right;
+    padding: 0.75rem;
+    background: #6a11cb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+
+
+
+.del-comment button{
+    float: right;
+    padding: 0.75rem;
+    background: #6a11cb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+
+.del-post button:hover {
+    background: #2575fc;
+}
+
+.del-comment button:hover {
+    background: #2575fc;
+}
+
+
+
+
+#search-form button {
+    padding: 0.75rem;
+    background: #6a11cb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#search-form button:hover {
+    background: #2575fc;
+}
+
+
+
+
+
+#search-type {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    
+    margin-left: 8px;
+    height: 38px; 
+    
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-color: #6a11cb;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234CAF50'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 16px;
+    padding-right: 30px;
+  }
+
+
+
 h2 {
     font-size: 1.75rem;
     margin-bottom: 1rem;
     color: #333;
     text-align: center;
+}
+h1{
+    margin-left: 20px;
 }
 
 /* Posts Section */
@@ -69,6 +264,7 @@ h2 {
     border-radius: 8px;
     padding: 1.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
 #add-post input,
@@ -144,8 +340,8 @@ h2 {
     outline: none;
 }
 .add-comment textarea {
-    resize: vertical;
-    min-height: 150px;
+    resize: none;
+    height: 20px;
 }
 .add-comment button{
     width: 100%;

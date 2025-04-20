@@ -4,16 +4,50 @@
     <link rel="stylesheet" href="MainPageStyles.css">
 </head>
 <body>
-    <div class="container">
-        <h1 id="welcome"></h1>
-        <section id="posts">
+    <header>
+        <a href="TechnologyPage.html" target="_blank" title="This link Leads to the technology page">Technology</a>
+        <a href="EducationPage.html" target="_blank" title="This link Leads to the education page">Education</a>
+        <a href="HealthPage.html" target="_blank" title="This link Leads to the health page">Health</a>
+        <a href="House&LifestylePage.html" target="_blank" title="This link Leads to the House & Lifestyle page">House & Lifestyle</a>
+        <a href="OtherPage.html" target="_blank" title="This link Leads to the other categories page">Other</a>
+    </header>
+    <div class="search-container">
+        <form id="search-form">
+            <h2>You can search here </h2>
+            <input id="search-input" type="text" placeholder="search (4-10 letters)" pattern="[a-zA-Z0-9]{4,10}" required>
+            <select id="search-type">
+                <option value="author">author</option>
+                <option value="title">title</option>
+            </select>
+            <button type="submit">search</button>
+        </form>
+        <section id="searched-posts">
             <!--posts bach yatzadou lahni bl js-->
         </section>
+    </div>
+    <div class="container">
+        <h1 id="welcome"></h1>
         <form id="add-post">
-            <input id="post-title" type="text" placeholder="Your post title here" required>
-            <textarea id="post-content" type="text" placeholder="Your post here" required></textarea>
+            <h2>You can post here</h2>
+            <input id="post-title" type="text" placeholder="Your post title here (4-10 letters)" pattern="[a-zA-Z0-9]{4,10}" required>
+            <textarea id="post-content" type="text" placeholder="Your post content here" required></textarea>
+            <label for="category">Select your post category</label>
+            <select id="category" required>
+
+                <option value="Technology">Technology</option>
+                <option value="Education">Education</option>
+                <option value="Health">Health</option>
+                <option value="House&Lifestyle">House & Lifestyle</option>
+                <option value="Other">Other</option>
+            </select>
             <button type="submit">Post</button>
+
         </form>
+        <section id="posts">
+            <h2>Here are all posts</h2>
+            <!--posts bach yatzadou lahni bl js-->
+        </section>
+
     </div>
     <script src="Script.js"></script>
 </body>
