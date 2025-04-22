@@ -21,13 +21,16 @@ const db = new sqlite3.Database('../database.db');
 /////////////////////////hadhi kifach nzidou user lel bd/////////////////////////////
 app.post('/api/signup', async (req, res) => {
     const { username, email, password } = req.body;
+    if (!username || !email || !password) {
+        return res.status(400).json({ message: 'Missing required fields' });
+    }
     db.run(
         'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
         [username, email, password],
         function(err){
             if(err){
                 if(err.message.includes('UNIQUE constraint failed'))
-                    return res.status(409).json({error: 'Email or username already used !'});
+                    return res.status(409).json({message: 'Email or username already used !'});
             }
             res.status(201).json({ message: 'User registered successfully' })
         }
@@ -38,17 +41,22 @@ app.post('/api/signup', async (req, res) => {
 
 
 
-
+ 
 //////////////////////hadhi bch  ythabet fl login idha kanah l email w pswd mawjoudin w s7a7//////////////////////////////
 app.post('/api/signin', async (req, res) => {
     const { email, password } = req.body;
+    if (!email || !password) {
+        return res.status(400).json({ message: 'Missing required fields' });
+    }
     db.get('SELECT * FROM users WHERE email = ?', [email], async (err, row) => {
         if (err) 
             return res.status(500).json({ message: 'Server error, please try again.' });
         if (!row)
             return res.status(400).json({ message: 'Invalid credentials' });
         if(password != row.password)
-            return res.status(400).json({ message: 'wrong password !'});
+            return res.status(400).json({ message: 'Wrong password !'});
+        if(email != row.email)
+            return res.status(400).json({ message: 'Wrong email !'});
 
         res.status(200).json({ message : 'Login successful!' , username : row.username} );
     });
@@ -63,11 +71,13 @@ app.post('/api/signin', async (req, res) => {
 app.post('/api/posts', (req, res) => {
     const { title, content, author ,category} = req.body;
     const date = new Date().toISOString();
-  
+    if (!title || !content || !author || !category) {
+        return res.status(400).json({ message: 'Missing required fields' });
+    }
     db.run(
       'INSERT INTO posts (title, content, author, date, category) VALUES (?, ?, ?, ?,?)',
       [title, content, author, date, category],
-      res.status(201).json({ message : 'post added successfully !'})
+        res.status(201).json({ message : 'post added successfully !'})
     );
   });
 ///////////////////////////////////////////////////////////////////////////////////////////////
