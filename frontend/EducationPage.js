@@ -44,7 +44,7 @@ async function renderUserPost(post, container) {
     postElement.innerHTML =
     `
         <form class="del-post" data-post-id="${post.postID}">
-            <button type="submit">delete my post</button>
+            <button type="submit"><i class="fas fa-trash-alt"></i></i></button>
         </form>
         <h2>${post.title}</h2>
         <p>${post.content}</p>
@@ -102,7 +102,7 @@ async function fetchComments(postId, postElement) {
           commentElement.innerHTML =
           `
             <form class="del-comment" data-comment-id="${comment.id}">
-              <button type="submit">delete my comment</button>
+              <button type="submit"><i class="fas fa-trash-alt"></i></button>
             </form>
             <p><strong>${comment.author}</strong> commented on ${new Date(comment.date).toLocaleDateString()}:</p>
             <p>${comment.content}</p>
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', async() => {
       Postcontainer.innerHTML=``;
       if(selectedtype=="title"){
         posts.forEach((post)=>{
-          if(input==post.title)
+          if(input==post.title && post.category=="Education")
             if(username==post.author)
               renderUserPost(post,Postcontainer);
             else
@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', async() => {
       }
       else if(selectedtype=="author"){
         posts.forEach((post)=>{
-          if(input==post.author)
+          if(input==post.author && post.category=="Education")
             if (username==post.author)
               renderUserPost(post,Postcontainer);
             else

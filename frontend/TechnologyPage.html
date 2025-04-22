@@ -3,22 +3,27 @@
 <head>
     <title>Technology</title>
     <link rel="stylesheet" href="MainPageStyles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header>
-        <br>
-        <h1>Posts concerns Technology<h1>
+        <a id="home-a" title="Home page" href="MainPage.html"><i class="fas fa-home"></i></a>
+        <a id="logout" title="Log out" href="StratPage.html"><i class="fa-solid fa-right-from-bracket"></i></a>
+        <h1 style="margin-right: 400px;">Posts concerns Technology<h1>
+            <div class="search-formel">
+
+            <form id="search-form">
+                <input id="search-input" type="text" placeholder="search" required>
+                <select id="search-type">
+                    <option value="author">author</option>
+                    <option value="title">title</option>
+                </select>
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+            </div>
     </header>
     <div class="search-container">
-        <form id="search-form">
-            <h2>You can search here </h2>
-            <input id="search-input" type="text" placeholder="search" required>
-            <select id="search-type">
-                <option value="author">author</option>
-                <option value="title">title</option>
-            </select>
-            <button type="submit">search</button>
-        </form>
         <section id="searched-posts">
             <!--posts bach yatzadou lahni bl js-->
         </section>

@@ -1,28 +1,64 @@
 <!DOCTYPE html>
 <head>
-    <title>log in</title>
+    <title>Startup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="StartPageStyles.css">
 </head>
 <body>
-    <div class="container">
-        <form id="signup-field">
-            <fieldset>
-                <legend>sign up</legend>
-                <input id="signup-username" type="text" placeholder="username" pattern="[a-zA-Z0-9]{4,10}" required>
-                <input id="signup-email" type="email" placeholder="email" required>
-                <input id="signup-password" type="password" placeholder="password(8 characters first uppercase)" pattern="[A-Z]{1}[a-z]{7}[0-9]{0,4}" required>
-                <button type="submit">sign up</button>
-            </fieldset>
-        </form>
-        <form id="signin-field">
-            <fieldset id="signin-field">
-                <legend>sign in</legend>
-                <input id="signin-email" type="email" placeholder="email" required>
-                <input id="signin-password" type="password" placeholder="password" required>
-                <button type="submit">sign in</button>
-            </fieldset>
-        </form>
-    </div>
+        <div class="container">
+            <div class="toggle-forms">
+                <button class="toggle-btn active" id="show-signup">Sign Up</button>
+                <button class="toggle-btn" id="show-signin">Sign In</button>
+            </div>
+    
+            <form id="signup-field" style="display: block;">
+                <fieldset>
+                    <legend>Create Account</legend>
+                    <div class="input-group">
+                        <input id="signup-username" type="text" placeholder="Username (3-10 characters)" 
+                               pattern="[a-zA-Z0-9]{3,10}" required>
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="input-group">
+                        <input id="signup-email" type="email" placeholder="Email address" required>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="input-group">
+                        <input id="signup-password" type="password" placeholder="Password (8+ chars, first uppercase)" 
+                               pattern="[A-Z]{1}[a-z0-9]{7,19}" required>
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="input-group">
+                        <input id = "signup-cpassword" type="password" placeholder="Confirm password (8+ chars, first uppercase)" 
+                               pattern="[A-Z]{1}[a-z0-9]{7,19}" required>
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <button type="submit">Sign Up</button>
+                    <div class="form-footer">
+                        Already have an account? <a href="#" id="switch-to-signin">Sign In</a>
+                    </div>
+                </fieldset>
+            </form>
+    
+            <form id="signin-field" style="display: none;">
+                <fieldset>
+                    <legend>Welcome Back</legend>
+                    <div class="input-group">
+                        <input id="signin-email" type="email" placeholder="Email address" required>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="input-group">
+                        <input id="signin-password" type="password" placeholder="Password" required>
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <button type="submit">Sign In</button>
+                    <div class="form-footer">
+                        Don't have an account? <a href="#" id="switch-to-signup">Sign Up</a>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
     <script src="StartPage.js"></script>
 </body>
 </html>

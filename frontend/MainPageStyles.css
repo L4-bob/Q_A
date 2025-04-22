@@ -1,4 +1,103 @@
 /* General Styles */
+
+
+    header {
+        background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+        color: white;
+        padding: 1rem 2rem;
+        display: grid;
+        grid-template-columns: auto 1fr auto auto;
+        align-items: center;
+        gap: 1.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+      
+      header h1 {
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 600;
+        white-space: nowrap;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+      }
+      
+      #home-a, #logout {
+        color: white;
+        font-size: 1.4rem;
+        transition: all 0.3s ease;
+        width: 2.5rem;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+      
+      #home-a:hover, #logout:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+      }
+      
+
+  
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    color: #00bcd4;
+  }
+  .search-formel{
+    float: right;
+    margin-right: 200px;
+  }
+  #search-form {
+    float: right;
+
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  #search-input{
+
+    height: 20px;
+  }
+  #search-form button {
+
+    height: 40px;
+    margin-left: 20px;
+    width: 80px;
+  }
+  #search-input,
+  #search-type,
+  #search-form button {
+    padding: 0.5rem;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  
+  #search-form button {
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #search-form button:hover {
+    background-color: #0097a7;
+  }
 body {
     font-family: 'Arial', sans-serif;
     background: #f4f4f9;
@@ -7,17 +106,11 @@ body {
     padding: 0;
     line-height: 1.6;
 }
-header h1{
-    margin-top: 0px;
-    font-size: 40px;
-    text-align: center;
-    color: #ddd;
-}
-header{
-    padding: 50px;
-    height: 50px;
-    background-color: #7729ca;
-}
+
+
+  
+
+
 h4{
     margin-left: 40px;
     width: 250px;
@@ -26,17 +119,7 @@ select{
     margin-left: 40px;
     margin-bottom: 10px;
 }
-a{
-    margin-left: 180px;
-    color: #ddd;
-    font-size: 30px;
-    font-family: 'Arial';
-    
-    
-}
-a:hover{
-    color: blanchedalmond;
-}
+
 label{
     margin-left: 35px;
     font-size: 20px;
@@ -81,7 +164,6 @@ label{
 
 .search-container {
     margin-top: 50px;
-    position: sticky;
     margin-right: 150px;
     float: right;
     width: 600px;
@@ -94,32 +176,6 @@ label{
     align-self: flex-start; /* Prevents stretching */
 }
 
-#search-form {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 1.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-}
-
-
-
-#search-form input{
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-    margin-left: 30px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    border-color: #6a11cb;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-}
-
-#search-form input:focus{
-    border-color: #6a11cb;
-    outline: none;
-}
 
 
 
@@ -181,31 +237,6 @@ label{
 
 
 
-#search-type {
-    padding: 8px 12px;
-    font-size: 14px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: white;
-    color: #333;
-    cursor: pointer;
-    
-    margin-left: 8px;
-    height: 38px; 
-    
-    transition: all 0.3s ease;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border-color: #6a11cb;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234CAF50'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 8px center;
-    background-size: 16px;
-    padding-right: 30px;
-  }
 
 
 
