@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async() => {
   const username = localStorage.getItem('username');
   const response=await fetch('http://localhost:4000/api/posts');
   const posts=await response.json();
-  const container = document.getElementById('posts'); // Get the container for posts
+  const container = document.getElementById('posts'); 
   posts.forEach((post) => {
       if(post.category=="Other"){
           if (post.author==username)
@@ -93,7 +93,7 @@ async function fetchComments(postId, postElement) {
   const comments = await response.json();
   const commentsContainer = postElement.querySelector(`#comments-${postId} .comment-list`);
   const username = localStorage.getItem('username');
-  commentsContainer.innerHTML = ``; // Clear old comments
+  commentsContainer.innerHTML = ``; 
   comments.forEach((comment) => {
       const commentElement = document.createElement('article');
       commentElement.classList.add('comment');
@@ -128,7 +128,6 @@ async function deletePost(event) {
     const confirmed = confirm('Are you sure you want to delete this post?');
     if (!confirmed) return;
 
-    // Get the post element for removal
     const postElement = form.closest('.post');
     
     const response = await fetch(`http://localhost:4000/api/posts/${postId}`, {
@@ -146,23 +145,18 @@ async function deletePost(event) {
     else
       alert(data.message);
 
-    // Success - remove post from UI
     if (postElement) {
       postElement.remove();
     }    
   }
 async function deleteComment(event) {
   event.preventDefault();    
-  // Get the comment ID from the form's data attribute
   const form = event.target;
   const commentId = form.dataset.commentId;    
-  // Get the comment element for removal
   const commentElement = form.closest('.comment');    
-  // Confirmation dialog
   const confirmed = confirm('Are you sure you want to delete this comment?');
   if (!confirmed) return;  
   try {
-      // Send DELETE request to backend
       const response = await fetch(`http://localhost:4000/api/comments/${commentId}`, {
           method: 'DELETE',
           headers: {
@@ -174,7 +168,6 @@ async function deleteComment(event) {
       const data = await response.json();
     
       if (response.ok) {
-          // Success - remove comment from UI
           if (commentElement) {
             commentElement.remove();
           }
@@ -196,7 +189,7 @@ document.addEventListener('DOMContentLoaded', async() => {
     const username = localStorage.getItem('username');
     const input = document.getElementById('search-input').value;
     const selectedtype=document.getElementById('search-type').value;
-    const Postcontainer= document.getElementById('searched-posts'); // Get the container for posts
+    const Postcontainer= document.getElementById('searched-posts'); 
     const response=await fetch('http://localhost:4000/api/posts');
     const posts=await response.json();
     Postcontainer.innerHTML=``;
@@ -223,4 +216,5 @@ document.addEventListener('DOMContentLoaded', async() => {
         Postcontainer.innerHTML=`<h1>there is no such post !</h1>`
     }
   });
+
 });
