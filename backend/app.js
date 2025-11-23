@@ -10,15 +10,13 @@ app.use(express.json());
 
 
 
-///////////////hadhi bch torbot el bd//////////////////////
 const db = new sqlite3.Database('../database.db');
-//////////////////////////////////////////////////////////
 
 
 
 
 
-/////////////////////////hadhi kifach nzidou user lel bd/////////////////////////////
+
 app.post('/api/signup', async (req, res) => {
     const { username, email, password } = req.body;
     if (!username || !email || !password) {
@@ -42,7 +40,6 @@ app.post('/api/signup', async (req, res) => {
 
 
  
-//////////////////////hadhi bch  ythabet fl login idha kanah l email w pswd mawjoudin w s7a7//////////////////////////////
 app.post('/api/signin', async (req, res) => {
     const { email, password } = req.body;
     if (!email || !password) {
@@ -67,7 +64,6 @@ app.post('/api/signin', async (req, res) => {
 
 
 
-////////////////////////hadhi kifach nzidou post lel bd////////////////////////////////////////
 app.post('/api/posts', (req, res) => {
     const { title, content, author ,category} = req.body;
     const date = new Date().toISOString();
@@ -86,11 +82,9 @@ app.post('/api/posts', (req, res) => {
 app.delete('/api/posts/:postID', (req, res) => {
     const postId = req.params.postID;
 
-    // Use a transaction for atomic operations
     db.serialize(() => {
         db.run('BEGIN TRANSACTION');
 
-        // First delete all comments
         db.run('DELETE FROM comments WHERE postId = ?', [postId], function(err) {
             if (err) {
                 db.run('ROLLBACK');
@@ -98,7 +92,6 @@ app.delete('/api/posts/:postID', (req, res) => {
                 return res.status(500).json({ message: 'Failed to delete comments' });
             }
 
-            // Then delete the post
             db.run('DELETE FROM posts WHERE postID = ?', [postId], function(err) {
                 if (err) {
                     db.run('ROLLBACK');
@@ -106,7 +99,6 @@ app.delete('/api/posts/:postID', (req, res) => {
                     return res.status(500).json({ message: 'Failed to delete post' });
                 }
 
-                // Check if any post was actually deleted
                 if (this.changes === 0) {
                     db.run('ROLLBACK');
                     return res.status(404).json({ message: 'Post not found' });
@@ -142,7 +134,6 @@ app.delete('/api/comments/:id', (req, res) => {
 
 
 
-/////////////////////////hadhi bach ybda server ye5dem 3l port mta3na//////////////////////////////
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
@@ -152,7 +143,6 @@ app.listen(port, () => {
 
 
 
-///////////////hadhi kifach nejbdou l posts elli mawjoudin fl bd lkol////////////
 app.get('/api/posts', (req, res) => {
   db.all('SELECT * FROM posts', (err, rows) => {
     if (err) {
@@ -168,7 +158,6 @@ app.get('/api/posts', (req, res) => {
 
 
 
-////////////////hadhi kifach tzzid cmntr fl bd//////////////////////////////////////
 app.post('/api/posts/:postID/comments', ( req , res ) => {
     const{author , content }=req.body;
     const postId = req.params.postID;
@@ -185,7 +174,6 @@ app.post('/api/posts/:postID/comments', ( req , res ) => {
 
 
 
-///////////////hadhiii kifach nejbdou l commentaraite elli mawjoudin fl bd////////////////////////
 app.get('/api/posts/:postID/comments' , ( req , res ) => {
     const postId = req.params.postID;
     db.all('select * from comments where postId = ? ' , [postId] , ( err , rows ) =>{
@@ -196,4 +184,5 @@ app.get('/api/posts/:postID/comments' , ( req , res ) => {
         res.json(rows);
     });
 });
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
